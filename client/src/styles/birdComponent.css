@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap");
+
+.MainContainer {
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    background-color: hsl(218, 41%, 15%);
+}
+
+.navbrand {
+    font-family: cursive;
+    font-weight: 700;
+
+}
+
+.navbutton {
+    background-color: #ccc;
+    color: black;
+
+}
+
+/* Pagination buttons container */
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Previous and Next buttons */
+.previousbutton,
+.nextbutton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.previousbutton:disabled,
+.nextbutton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Page indicator */
+.pagination-indicator {
+    margin: 0 10px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    height: 100%;
+}
+
+.card {
+    position: relative;
+    height: 28rem;
+    width: 20rem;
+    aspect-ratio: 5/7;
+    color: #ffffff;
+    background: transparent;
+    perspective: 50rem;
+}
+
+.card .shadow {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    filter: blur(2rem) saturate(0.9);
+    box-shadow: 0 -1.5rem 2rem -0.5rem rgba(0, 0, 0, 0.7);
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 2rem, -2rem);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* Increase the size of the card on hover */
+    transition: transform 0.3s ease;
+    /* Add a smooth transition effect */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Add a box shadow on hover */
+}
+
+
+.card .image {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 40%), var(--url);
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: var(--url);
+    mask-image: var(--url);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.card .imagebackground {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 40%), var(--url);
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: var(--url);
+    mask-image: var(--url);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 0, 0rem);
+}
+
+
+.card .image.cutout {
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 0, 4rem) scale(0.92);
+    z-index: 3;
+}
+
+.card .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    inset: 0;
+    padding: 3.5rem;
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 0, 6rem);
+    z-index: 4;
+}
+
+.card::after,
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 1.5rem;
+    border: #e2c044 0.5rem solid;
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 0, 2rem);
+}
+
+.card::before {
+    z-index: 4;
+}
+
+.card.border-left-behind::before {
+    border-left: transparent;
+}
+
+.card.border-right-behind::before {
+    border-right: transparent;
+}
+
+.card.border-bottom-behind::before {
+    border-bottom: transparent;
+}
+
+
+#button {
+    color: #ffffff;
+}
+
+
+h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+}
+
+.categorydiv{
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+    justify-content: space-around;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-wrap: wrap;
+}
+
+.categoryHead {
+    color: #ccc;
+    padding: 0px 8px;
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    /* font-weight: 300; */
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+}
+
+.summary {
+    color: rgb(1, 1, 224);
+    text-decoration: none;
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+    font-style: bold;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.summary:hover {
+    color: rgb(19, 19, 20);
+
+}
+
+
+
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    margin-top: auto;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.searchbar {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the search input */
+.searchbar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Style for the search button */
+.searchbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Adjust button appearance on hover and active states */
+.searchbutton:hover {
+    background-color: #0056b3;
+}
+
+.searchbutton:active {
+    background-color: #003b80;
+}
+
+/* Optionally add some media queries to make the layout responsive */
+@media screen and (max-width: 768px) {
+    .searchnav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchbar {
+        margin-top: 10px;
+    }
+}
+
+
+/* Hide the default scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #e21010;
+    border-radius: 2px 2px 20px 20px;
+    clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}

@@ -1,0 +1,48 @@
+.summarycard {
+    color: rgb(0, 0, 0);
+    height: 100%;
+
+}
+
+.Summary {
+    font-size: medium;
+    height: 100%;
+    width: auto;
+    margin: auto;
+    padding: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.image {
+    width: 100%;
+    /* Set the image width to 100% of its container */
+    height: auto;
+    /* Maintain aspect ratio while resizing */
+    border-radius: 10px;
+    /* Add rounded corners to the image */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow effect */
+}
+
+.imagebackground {
+    transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) translate3d(0, 0, 0rem);
+}
+
+.summarylabel {
+    text-align: center;
+}
+
+.summarytext-center {
+    text-align: center;
+}
+
+.image-container {
+    gap: 2rem;
+    justify-content: center;
+    display: flex;
+}
+
+.bird-image{
+    width: 500px;
+    height: auto;
+}
