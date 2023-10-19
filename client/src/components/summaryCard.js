@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // Import the styles
 import "../styles/SummaryComponent.css"
-import axios from 'axios';
+import axios from '../utils/baseapi';
 
 function BirdCard() {
   const location = useLocation();
@@ -11,7 +11,7 @@ function BirdCard() {
   const [summary, setSummary] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  axios.defaults.withCredentials = true;
+  
   useEffect(() => {
     // Set the received summary data to the state
     setSummary(location.state);
@@ -27,7 +27,7 @@ function BirdCard() {
     const fetchImage = async () => {
       try {
         if (name && species) {
-          const response = await axios.get(`https://eco-world-server.vercel.app/api/getimages?name=${name}&species=${species}&category=${category}`);
+          const response = await axios.get(`/api/getimages?name=${name}&species=${species}&category=${category}`);
           setImage(response.data.imageUrls); // Assuming the response contains an "imageUrls" array
           console.log(response.data.imageUrls);
         }

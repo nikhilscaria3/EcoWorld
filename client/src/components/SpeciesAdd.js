@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/birdComponent.css"
-import axios from 'axios'; // Import Axios
+import axios from '../utils/baseapi'; // Import Axios
 import { useNavigate } from 'react-router-dom';
 
 
@@ -35,7 +35,7 @@ function SpeciesAddComponent() {
 
     });
 
-    axios.defaults.withCredentials = true;
+
 
     console.log(Inputs)
     const navigate = useNavigate()
@@ -72,7 +72,7 @@ function SpeciesAddComponent() {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://eco-world-server.vercel.app/api/data?category=${category}`);
+                const response = await axios.get(`/api/data?category=${category}`);
                 console.log(response.data);
                 setUsers(response.data.users);
                 setApiCategory(response.data.categories)
@@ -139,6 +139,10 @@ function SpeciesAddComponent() {
         }
     }, [initialErrors, message]);
 
+
+    const wordCount = Inputs.description.split(/\s+/).filter(word => word !== '').length;
+
+
     const handleSubmit = async (event) => {
         setIsSending(true); // Set sending state to true when sending starts
 
@@ -152,7 +156,7 @@ function SpeciesAddComponent() {
             formErrors.name.required = true;
             hasError = true;
         }
-        if (Inputs.description === '' || Inputs.description.length > 20) {
+        if (Inputs.description === '' && Inputs.description.length > 25) {
             formErrors.description.required = true;
             hasError = true;
         }
@@ -187,7 +191,7 @@ function SpeciesAddComponent() {
 
 
             try {
-                const response = await axios.post('https://eco-world-server.vercel.app/api/dataadd', formData, {
+                const response = await axios.post('/api/dataadd', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
@@ -199,7 +203,7 @@ function SpeciesAddComponent() {
                 // Clear the Images state variable
                 setImages(null);
 
-              
+
             } catch (error) {
                 // Handle error, e.g., show an error message to the user
                 console.error('Error adding bird data:', error);
@@ -305,11 +309,14 @@ function SpeciesAddComponent() {
                                         Name is required.
                                     </span>) : null}
 
-                                    <label htmlFor="description" className="form-label">Description (Max 20 Words)</label>
-                                    <input type="text" className="form-control" id="description" onChange={handleInputChange} name="description" />
-                                    {errors.description.required ? (<span className="text-danger" >
-                                        Description is required.
+
+                                    <label htmlFor="species" className="form-label">Known as</label>
+                                    <input type="text" className="form-control" id="species" name="species" onChange={handleInputChange} />
+                                    {errors.species.required ? (<span className="text-danger">
+                                        Species is required.
                                     </span>) : null}
+
+
 
                                     <label htmlhtmlFor="category" className="form-label">
                                         Category
@@ -336,6 +343,23 @@ function SpeciesAddComponent() {
                                     ) : null}
 
 
+
+                                    <label htmlFor="description" className="form-label">Description (Max 25 Words)</label>
+                                    <input type="text" className="form-control" id="description" onChange={handleInputChange} name="description" />
+                                    {wordCount > 25 ? (
+                                        <span className="text-danger">
+                                            Description should not exceed 25 words.
+                                        </span>
+                                    ) : null}
+                                    <div>
+                                        Word Count: {wordCount}
+                                    </div>
+                                    {errors.description.required ? (<span className="text-danger" >
+                                        Description is required.
+                                    </span>) : null}
+
+
+
                                     <label htmlFor="summary" className="form-label">Summary</label>
                                     <textarea className="form-control" id="summary" name="summary" rows="3" onChange={handleInputChange} ></textarea>
                                     {errors.summary.required ? (<span className="text-danger" >
@@ -346,16 +370,13 @@ function SpeciesAddComponent() {
                                     <label htmlFor="image" className="form-label">Images</label>
                                     <input type="file" name="photo" id="photo" onChange={handleFileChange} accept="image/*" multiple />
 
-                                    <label htmlFor="species" className="form-label">Known as</label>
-                                    <input type="text" className="form-control" id="species" name="species" onChange={handleInputChange} />
-                                    {errors.species.required ? (<span className="text-danger">
-                                        Species is required.
-                                    </span>) : null}
 
+                                    <div className='datasubmitbuttoncontainer'>
+                                        <button className='datasubmitbutton' onClick={handleSubmit} disabled={isSending}>
+                                            {isSending ? 'Adding...' : 'Add'}
+                                        </button>
+                                    </div>
 
-                                    <button className='datasubmitbutton' onClick={handleSubmit} disabled={isSending}>
-                                        {isSending ? 'Sending...' : 'Send'}
-                                    </button>
 
                                     {message && (
                                         <div className="message mt-2">
