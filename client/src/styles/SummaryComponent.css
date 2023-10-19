@@ -6,12 +6,103 @@
 
 .Summary {
     font-size: medium;
-    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 600px;
     width: auto;
     margin: auto;
     padding: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.summarylabel{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.summarytext-center{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+}
+
+.download-button {
+    background-color: #4CAF50; /* Green background color */
+    border: none; /* No border */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Display as inline-block */
+    font-size: 16px; /* Font size */
+    margin-top: 10px; /* Margin on top */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 5px; /* Optional: Rounded corners */
+  }
+  
+  .download-button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+  }
+  
+
+
+  .image-wrapper{
+    display: grid;
+    width: auto;
+    padding: 1rem;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+
+  }
+/* Add this CSS to your stylesheets */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.imageborder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.bird-image:hover {
+    transform: scale(0.9);
+    /* Add a slight zoom effect on hover */
+}
+
+.shadow {
+    width: 150px;
+    /* Match the width of the images */
+    height: 150px;
+    /* Match the height of the images */
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 1;
+}
+
+/* Optional: Add styles for the gallery title */
+.image-container p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Optional: Add styles for the image border */
+.imageborder {
+    border: 2px solid #131212;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Optional: Add styles for the Lightbox */
+.react-image-lightbox {
+    z-index: 9999;
+}
+
 
 .image {
     width: 100%;
@@ -42,7 +133,25 @@
     display: flex;
 }
 
-.bird-image{
-    width: 500px;
-    height: auto;
+.bird-image {
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 400px;
+    height: 400px;
+}
+
+.imagegallerycontainer{
+    margin-top: 5em;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+}
+.imagegallery{
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    margin: auto;
+    
 }

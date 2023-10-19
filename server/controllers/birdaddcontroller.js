@@ -1,4 +1,4 @@
-const { Data } = require('../models/usermodel');
+const { Data, Category } = require('../models/usermodel');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const path = require('path');
 const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp'];
@@ -12,10 +12,23 @@ const s3Client = new S3Client({
 });
 
 exports.createAddBird = async (req, res) => {
-  const { name, description, summary, category, species ,data} = req.body;
+  const { name, description, summary, category, species, data } = req.body;
   const files = req.files; // Array of files from multi-part form data
- console.log(req.body);
+  console.log(req.body);
 
+  const existingCategory = await Category.findOne({ category });
+
+  if (!existingCategory) {
+    const newCategory = new Category({
+      category
+    });
+  
+    await newCategory.save();
+    console.log('Category added successfully.');
+  } else {
+    console.log('Category already exists.');
+  }
+  
   // Check if there are files in the request
   if (!files || files.length === 0) {
     return res.status(400).json({ message: 'No files uploaded' });

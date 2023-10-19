@@ -1,16 +1,17 @@
 // controllers/birdController.js
 
-const { Data } = require('../models/usermodel');
+const { Data, Category } = require('../models/usermodel');
 
 exports.getAllBirds = async (req, res) => {
   try {
 
     const category = req.query
 
+    const getcategory = await Category.find()
+    const categories = getcategory.map(({ category }) => category);
     const users = await Data.find({ category: category.category });
-
     // Extract image details from the nested structure
-    res.json({ users });
+    res.json({ users, categories });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -19,7 +20,7 @@ exports.getAllBirds = async (req, res) => {
 
 exports.getImage = async (req, res) => {
   try {
-    const { species, name , category} = req.query;
+    const { species, name, category } = req.query;
     console.log(category);
 
     // Check if required parameters are provided

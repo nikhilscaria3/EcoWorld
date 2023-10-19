@@ -12,17 +12,23 @@ const imageSchema = new mongoose.Schema({
 });
 
 const DataSchema = new mongoose.Schema({
-    name: String,
-    description:String,
-    summary:String,
-    species:String,
-    category:String,
-    photos: {
-      type: [imageSchema],
-    },
-  });
-  
-  const Data = mongoose.model('datas', DataSchema);
+  name: String,
+  description: String,
+  summary: String,
+  species: String,
+  category: String,
+  photos: {
+    type: [imageSchema],
+  },
+});
+
+
+
+const CategorySchema = new mongoose.Schema({
+  category: String
+})
+const Data = mongoose.model('datas', DataSchema);
+const Category = mongoose.model('category', CategorySchema);
 
 
 //   const animalSchema = new mongoose.Schema({
@@ -34,14 +40,14 @@ const DataSchema = new mongoose.Schema({
 //       title: String,
 //       filepath: String
 //     }
-   
+
 //   });
-  
+
 //   const animal = mongoose.model('animals', animalSchema);
 
 module.exports = {
-  Data
+  Data,
+  Category
 }
 
 
-  
