@@ -27,7 +27,7 @@ function BirdCard() {
     const fetchImage = async () => {
       try {
         if (name && species) {
-          const response = await axios.get(`/api/getimages?name=${name}&species=${species}&category=${category}`);
+          const response = await axios.get(`https://eco-world-server.vercel.app/api/getimages?name=${name}&species=${species}&category=${category}`);
           setImage(response.data.imageUrls); // Assuming the response contains an "imageUrls" array
           console.log(response.data.imageUrls);
         }

@@ -72,7 +72,7 @@ function SpeciesAddComponent() {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/data?category=${category}`);
+                const response = await axios.get(`https://eco-world-server.vercel.app/api/data?category=${category}`);
                 console.log(response.data);
                 setUsers(response.data.users);
                 setApiCategory(response.data.categories)
@@ -187,7 +187,7 @@ function SpeciesAddComponent() {
 
 
             try {
-                const response = await axios.post('/api/dataadd', formData, {
+                const response = await axios.post('https://eco-world-server.vercel.app/api/dataadd', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
