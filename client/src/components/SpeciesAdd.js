@@ -37,7 +37,7 @@ function SpeciesAddComponent() {
 
 
 
-    console.log(Inputs)
+
     const navigate = useNavigate()
 
     const totalPages = users ? Math.ceil(users.length / pageSize) : 0;
