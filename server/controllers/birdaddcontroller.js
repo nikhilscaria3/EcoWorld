@@ -16,18 +16,18 @@ exports.createAddBird = async (req, res) => {
   const files = req.files; // Array of files from multi-part form data
   console.log(req.body);
 
-  const existingCategory = await Category.findOne({ category });
+  // const existingCategory = await Category.findOne({ category });
 
-  if (!existingCategory) {
-    const newCategory = new Category({
-      category
-    });
+  // if (!existingCategory) {
+  //   const newCategory = new Category({
+  //     category
+  //   });
   
-    await newCategory.save();
-    console.log('Category added successfully.');
-  } else {
-    console.log('Category already exists.');
-  }
+  //   await newCategory.save();
+  //   console.log('Category added successfully.');
+  // } else {
+  //   console.log('Category already exists.');
+  // }
   
   // Check if there are files in the request
   if (!files || files.length === 0) {
