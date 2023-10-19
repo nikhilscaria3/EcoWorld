@@ -254,7 +254,7 @@ function SpeciesAddComponent() {
                                         To Add
                                     </button>
 
-                                    {apicategory.length > 0 &&
+                                    {apicategory?.length > 0 &&
                                         apicategory.map((categoryItem) => (
                                             <button
                                                 key={categoryItem} // Make sure to provide a unique key for each button
