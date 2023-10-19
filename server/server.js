@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(cors())
 
 } else {
-  
+
   app.use(cors({
 
     origin: ["https://eco-world-eta.vercel.app"],
@@ -32,11 +32,6 @@ if (process.env.NODE_ENV === "development") {
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'routes')]);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use('/uploads', express.static('uploads'));
-app.use('/uploads1', express.static('uploads1'));
-app.use(express.static(path.join(__dirname, 'views')))
-app.use(express.static(path.join(__dirname, 'views/html')))
 
 
 if (process.env.NODE_ENV === "development") {
@@ -93,9 +88,6 @@ app.use('/', animalRoutes);
 app.use('/', animalAddRoutes);
 app.use('/', birdAddRoutes);
 
-app.get('/', (req, res) => {
-  res.render('landing')
-})
 
 
 // app.post('/birdsadd', upload.single('photo'), async (req, res) => {
