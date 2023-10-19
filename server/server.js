@@ -84,7 +84,9 @@ const birdAddRoutes = require('./routes/birdaddroute');
 app.use('/', birdRoutes);
 app.use('/', birdAddRoutes);
 
-
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 // app.post('/birdsadd', upload.single('photo'), async (req, res) => {
 //   const { name, description, summary, species } = req.body;
