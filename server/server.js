@@ -76,16 +76,12 @@ if (process.env.NODE_ENV === "development") {
 
 
 const birdRoutes = require('./routes/birdroute');
-const animalRoutes = require('./routes/animalroute');
-const animalAddRoutes = require('./routes/animaladdroute');
 const birdAddRoutes = require('./routes/birdaddroute');
 
 // // Other app configurations and middleware
 
 // // Mount the bird routes
 app.use('/', birdRoutes);
-app.use('/', animalRoutes);
-app.use('/', animalAddRoutes);
 app.use('/', birdAddRoutes);
 
 
