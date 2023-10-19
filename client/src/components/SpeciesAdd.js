@@ -438,7 +438,7 @@ function SpeciesAddComponent() {
                             </div>
                         ))
                     )}
-                    {!users.length && searchQuery && (
+                    {!users?.length && searchQuery && (
                         <div className="empty-state">
                             <p className='categoryHead'>Search Not Found in Database</p>
                         </div>
