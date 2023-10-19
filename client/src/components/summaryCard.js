@@ -11,7 +11,7 @@ function BirdCard() {
   const [summary, setSummary] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   useEffect(() => {
     // Set the received summary data to the state
     setSummary(location.state);
@@ -75,19 +75,27 @@ function BirdCard() {
 
             <div className="image-container">
               <div className="imageborder">
+                {image?.length > 0 ? (
+                  image.map((imageUrl, index) => (
+                    <div key={index} className="image-wrapper">
+                      <img
+                        className="bird-image"
+                        src={imageUrl}
+                        alt=""
+                        onClick={() => {
+                          setPhotoIndex(index);
+                          setIsOpen(true);
+                        }}
+                      />
+                      <button className="download-button" onClick={() => downloadImage(imageUrl)}>
+                        Download
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p>Image Not Found</p>
+                )}
 
-                {image?.map((imageUrl, index) => (
-                  <div key={index} className="image-wrapper">
-                    <img className="bird-image" src={imageUrl} alt="" onClick={() => {
-                      setPhotoIndex(index);
-                      setIsOpen(true);
-                    }} />
-                    <button className="download-button" onClick={() => downloadImage(imageUrl)}>
-                      Download
-                    </button>
-                  </div>
-
-                ))}
               </div>
             </div>
           </div>
