@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "development") {
 } else {
   app.use(cors({
 
-    origin: [],
+    origin: ["https://eco-world-eta.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 
