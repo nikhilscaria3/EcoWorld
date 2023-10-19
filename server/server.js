@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(cors())
 
 } else {
+  
   app.use(cors({
 
     origin: ["https://eco-world-eta.vercel.app"],

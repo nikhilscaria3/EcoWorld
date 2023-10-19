@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/socket.io',
     createProxyMiddleware({
-      target: 'http://localhost:5000', // Your backend URL
+      target: 'https://eco-world-server.vercel.app', // Your backend URL
       changeOrigin: true,
       ws: true,
     })
