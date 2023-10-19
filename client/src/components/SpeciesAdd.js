@@ -35,6 +35,8 @@ function SpeciesAddComponent() {
 
     });
 
+    axios.defaults.withCredentials = true;
+
     console.log(Inputs)
     const navigate = useNavigate()
 

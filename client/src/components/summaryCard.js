@@ -11,7 +11,7 @@ function BirdCard() {
   const [summary, setSummary] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     // Set the received summary data to the state
     setSummary(location.state);
@@ -86,7 +86,7 @@ function BirdCard() {
                       Download
                     </button>
                   </div>
-                  
+
                 ))}
               </div>
             </div>
